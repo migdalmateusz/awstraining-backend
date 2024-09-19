@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotifyMeService {
 
+    private MessageSender sender;
+
     // TODO: lab1
     //  1. Inject MessageSender.
     // TODO lab2
@@ -12,11 +14,13 @@ public class NotifyMeService {
     // TODO lab3
     //  1. Inject sentiment detector
 //    @Autowired
-    public NotifyMeService() {
-
+    public NotifyMeService(MessageSender sender) {
+        this.sender = sender;
     }
     
     public String notifyMe(NotifyMeDO notifyMe) {
+        String textToBeSend = notifyMe.text();
+        sender.send(textToBeSend);
       
         // TODO: lab1
         //  1. Send text using sender.
