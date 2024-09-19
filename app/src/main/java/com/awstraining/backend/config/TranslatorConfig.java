@@ -23,19 +23,9 @@ public class TranslatorConfig {
 
     @Value("${aws.secretKey:#{null}}")
     private String snsSecretKey;
-    
-    // TODO: lab2
-    //  0. Uncomment @Bean section.
-    //  1. Configure AmazonTranslator which will be used by fargate within AWS.
-    //  2. Make sure that your task role has access to call translateText action (ecs-task-role-policy).
-    //  3. Think how to connect with AWS Service from your local pc.
+
     @Bean
     AmazonTranslate configureTranslatorClient() {
-        return AmazonTranslateClientBuilder.standard()
-                                           .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(
-                                             snsAccessKey,
-                                             snsSecretKey)))
-                                           .withRegion(awsRegion)
-                                           .build();
+        return AmazonTranslateClientBuilder.standard().build();
     }
 }
