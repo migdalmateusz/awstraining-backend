@@ -1,5 +1,6 @@
 package com.awstraining.backend.business.notifyme;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class NotifyMeService {
     //  1. Inject Translator
     // TODO lab3
     //  1. Inject sentiment detector
-//    @Autowired
+    @Autowired
     public NotifyMeService(MessageSender sender) {
         this.sender = sender;
     }
